@@ -4,14 +4,14 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 ## Speech To Text
 
 ### English only model
-The main model handles english only, it has ~2.6B parameters.
+The main model handles english only, it has ~2.6b parameters.
 
 #### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
-python -m moshi.run_inference --hf-repo kyutai/stt-2.6B-en bria.mp3
+python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
 
 #### MLX implementation
@@ -56,7 +56,23 @@ can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
 
 ### English + French model
-This model has ~1B parameters and supports both English and French.
+This model has ~1b parameters and supports both English and French.
+
+#### PyTorch implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr)
+
+```bash
+# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
+python -m moshi.run_inference --hf-repo kyutai/stt-1b-en_fr bria.mp3
+```
+
+#### MLX implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr-mlx)
+
+```bash
+# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
+python -m moshi_mlx.run_inference --hf-repo kyutai/stt-1b-en_fr-mlx bria.mp3 --temp 0
+```
 
 #### Rust implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr-candle)
