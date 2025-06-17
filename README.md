@@ -3,8 +3,8 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 
 ## Speech To Text
 
-### Leaderboard model
-The leaderboard model handles english only, it has ~2.6B parameters.
+### English only model
+The main model handles english only, it has ~2.6B parameters.
 
 #### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6B-en)
@@ -54,6 +54,19 @@ uv run scripts/asr-streaming-query.py bria.mp3
 The script simulates some real-time processing of the audio. Faster processing
 can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
+
+### English + French model
+This model has ~1B parameters and supports both English and French.
+
+#### Rust implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-1B-en_fr-candle)
+
+The only difference with the en only model is the config file used when
+launching the server.
+```bash
+moshi-server worker --config configs/config-stt-enfr-hf.toml
+```
+
 
 ## Text To Speech
 
