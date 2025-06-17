@@ -7,7 +7,7 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 The main model handles english only, it has ~2.6B parameters.
 
 #### PyTorch implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6B-en)
+[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
@@ -15,15 +15,15 @@ python -m moshi.run_inference --hf-repo kyutai/stt-2.6B-en bria.mp3
 ```
 
 #### MLX implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6B-en-mlx)
+[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-mlx)
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
-python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6B-en-mlx bria.mp3 --temp 0
+python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
 ```
 
 #### Rust implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6B-en-candle)
+[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
 
 The Rust implementation provides a server that can process multiple streaming
 queries in parallel. Dependening on the amount of memory on your GPU, you may
@@ -59,7 +59,7 @@ the data as fast as possible.
 This model has ~1B parameters and supports both English and French.
 
 #### Rust implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-1B-en_fr-candle)
+[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr-candle)
 
 The only difference with the en only model is the config file used when
 launching the server.
