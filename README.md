@@ -55,6 +55,10 @@ The script simulates some real-time processing of the audio. Faster processing
 can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
 
+## Text To Speech
+
+We're in the process of open-sourcing our TTS models. Check back for updates!
+
 ## License
 
 The present code is provided under the MIT license for the Python parts, and Apache license for the Rust backend.
