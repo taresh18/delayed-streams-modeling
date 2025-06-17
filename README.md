@@ -3,17 +3,57 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 
 ## Speech To Text
 
-### PyTorch implementation
+### Leaderboard model
+The leaderboard model handles english only, it has ~2.6B parameters.
+
+#### PyTorch implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt)
 
 ```bash
-python -m moshi.run_inference --hf-repo kyutai/stt input.mp3
+# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
+python -m moshi.run_inference --hf-repo kyutai/stt bria.mp3
 ```
 
-### MLX implementation
+#### MLX implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-mlx)
 
 ```bash
-python -m moshi_mlx.run_inference --hf-repo kyutai/stt-mlx ~/tmp/bria-24khz.mp3 --temp 0
+# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
+python -m moshi_mlx.run_inference --hf-repo kyutai/stt-mlx bria.mp3 --temp 0
 ```
+
+#### Rust implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-candle)
+
+The Rust implementation provides a server that can process multiple streaming
+queries in parallel. Dependening on the amount of memory on your GPU, you may
+have to adjust the batch size from the config file. For a L40S GPU, a batch size
+of 64 works well.
+
+In order to run the server, install the `moshi-server` crate via the following
+command. The server code can be found in the
+[kyutai-labs/moshi](https://github.com/kyutai-labs/moshi/tree/main/rust/moshi-server)
+repository.
+```bash
+cargo install --features cuda moshi-server
+```
+
+Then the server can be started via the following command using the config file
+from this repository.
+```bash
+moshi-server worker --config configs/config-stt-hf.toml
+```
+
+Once the server has started you can run a streaming inference with the following
+script.
+```bash
+# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
+uv run scripts/asr-streaming-query.py bria.mp3
+```
+
+The script simulates some real-time processing of the audio. Faster processing
+can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
+the data as fast as possible.
 
 ## License
 
