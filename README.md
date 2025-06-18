@@ -8,6 +8,10 @@ The main model handles english only, it has ~2.6b parameters.
 
 #### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
+<a target="_blank" href="https://colab.research.google.com/drive/1mc0Q-FoHxU2pEvId8rTdS4q1r1zorJhS?usp=sharing">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
