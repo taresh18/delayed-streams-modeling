@@ -36,6 +36,16 @@ python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --te
 ### Rust implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
 
+A standalone Rust example is provided in the `stt-rs` directory in this repo.
+This can be used as follows:
+```bash
+cd stt-rs
+cargo run --features cuda -r -- bria.mp3
+```
+
+### Rust server
+[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
+
 The Rust implementation provides a server that can process multiple streaming
 queries in parallel. Dependening on the amount of memory on your GPU, you may
 have to adjust the batch size from the config file. For a L40S GPU, a batch size
