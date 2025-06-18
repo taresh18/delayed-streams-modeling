@@ -13,6 +13,8 @@ transcribed into text. We provide two such models:
 - An English only model with ~2.6b parameters using a 2.5 second delay,
   `kyutai/stt-2.6b-en`.
 
+More details can be found on the [project page](https://kyutai.org/next/stt).
+
 ### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
 <a target="_blank" href="https://colab.research.google.com/drive/1mc0Q-FoHxU2pEvId8rTdS4q1r1zorJhS?usp=sharing">
