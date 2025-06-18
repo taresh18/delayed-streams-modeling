@@ -3,10 +3,17 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 
 ## Speech To Text
 
-### English only model
-The main model handles english only, it has ~2.6b parameters.
+DSM can be used to build streaming speech to text models. These models can be
+batched for efficiency, return word level timestamps,  and are great for
+interactive applications. We provide two such models, these models are
+characterized by their size as well as the delay it takes for audio to be
+transcribed into text. We provide two such models:
+- An English only model with ~2.6b parameters using a 2.5 second delay,
+  `kyutai/stt-2.6b-en`.
+- An English and French model with ~1b parameters using a 0.5 second delay,
+  `kyutai/stt-1b-en_fr`.
 
-#### PyTorch implementation
+### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
 <a target="_blank" href="https://colab.research.google.com/drive/1mc0Q-FoHxU2pEvId8rTdS4q1r1zorJhS?usp=sharing">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
@@ -20,7 +27,7 @@ with version 0.2.5 or later, which can be installed via pip.
 python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
 
-#### MLX implementation
+### MLX implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-mlx)
 
 This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
@@ -31,7 +38,17 @@ with version 0.2.5 or later, which can be installed via pip.
 python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
 ```
 
-#### Rust implementation
+### Rust implementation
+[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
+
+A standalone Rust example is provided in the `stt-rs` directory in this repo.
+This can be used as follows:
+```bash
+cd stt-rs
+cargo run --features cuda -r -- bria.mp3
+```
+
+### Rust server
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
 
 The Rust implementation provides a server that can process multiple streaming
@@ -63,35 +80,6 @@ uv run scripts/asr-streaming-query.py bria.mp3
 The script simulates some real-time processing of the audio. Faster processing
 can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
-
-### English + French model
-This model has ~1b parameters and supports both English and French.
-
-#### PyTorch implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr)
-
-```bash
-# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
-python -m moshi.run_inference --hf-repo kyutai/stt-1b-en_fr bria.mp3
-```
-
-#### MLX implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr-mlx)
-
-```bash
-# wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
-python -m moshi_mlx.run_inference --hf-repo kyutai/stt-1b-en_fr-mlx bria.mp3 --temp 0
-```
-
-#### Rust implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-1b-en_fr-candle)
-
-The only difference with the en only model is the config file used when
-launching the server.
-```bash
-moshi-server worker --config configs/config-stt-enfr-hf.toml
-```
-
 
 ## Text To Speech
 
