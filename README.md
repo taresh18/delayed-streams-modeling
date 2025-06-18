@@ -36,6 +36,12 @@ with version 0.2.5 or later, which can be installed via pip.
 python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
 
+If you have `uv` installed, you can skip the installation step and run directly:
+```bash
+uvx --with moshi python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
+```
+It will install the moshi package in a temporary environment and run the speech-to-text.
+
 ### MLX implementation
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
@@ -47,6 +53,12 @@ with version 0.2.5 or later, which can be installed via pip.
 ```bash
 python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
 ```
+
+If you have `uv` installed, you can skip the installation step and run directly:
+```bash
+uvx --with moshi-mlx python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
+```
+It will install the moshi package in a temporary environment and run the speech-to-text.
 
 ### Rust implementation
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
@@ -91,8 +103,9 @@ script.
 uv run scripts/asr-streaming-query.py bria.mp3
 ```
 
-The script simulates some real-time processing of the audio. Faster processing
-can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
+The script limits the decoding speed to simulates real-time processing of the audio. 
+Faster processing can be triggered by setting 
+the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
 
 ## Text-to-Speech
