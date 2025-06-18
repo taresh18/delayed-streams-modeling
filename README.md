@@ -1,17 +1,17 @@
 # delayed-streams-modeling
 Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimodal sequence-to-sequence learning.
 
-## Speech To Text
+## Speech-to-text
 
-DSM can be used to build streaming speech to text models. These models can be
+DSM can be used to build streaming speech-to-text models. These models can be
 batched for efficiency, return word level timestamps,  and are great for
 interactive applications. We provide two such models, these models are
 characterized by their size as well as the delay it takes for audio to be
 transcribed into text. We provide two such models:
-- An English only model with ~2.6b parameters using a 2.5 second delay,
-  `kyutai/stt-2.6b-en`.
 - An English and French model with ~1b parameters using a 0.5 second delay,
   `kyutai/stt-1b-en_fr`.
+- An English only model with ~2.6b parameters using a 2.5 second delay,
+  `kyutai/stt-2.6b-en`.
 
 ### PyTorch implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
@@ -54,10 +54,11 @@ cargo run --features cuda -r -- bria.mp3
 The Rust implementation provides a server that can process multiple streaming
 queries in parallel. Dependening on the amount of memory on your GPU, you may
 have to adjust the batch size from the config file. For a L40S GPU, a batch size
-of 64 works well.
+of 64 works well and requests can be processed at 3x real-time speed.
 
-In order to run the server, install the `moshi-server` crate via the following
-command. The server code can be found in the
+In order to run the server, install the [moshi-server
+crate](https://crates.io/crates/moshi-server) via the following command. The
+server code can be found in the
 [kyutai-labs/moshi](https://github.com/kyutai-labs/moshi/tree/main/rust/moshi-server)
 repository.
 ```bash
@@ -81,7 +82,7 @@ The script simulates some real-time processing of the audio. Faster processing
 can be triggered by setting the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
 
-## Text To Speech
+## Text-to-Speech
 
 We're in the process of open-sourcing our TTS models. Check back for updates!
 
@@ -92,4 +93,4 @@ The web client code is provided under the MIT license.
 Note that parts of this code is based on [AudioCraft](https://github.com/facebookresearch/audiocraft), released under
 the MIT license.
 
-The weights for the models are released under the CC-BY 4.0 license.
+The weights for the speech-to-text models are released under the CC-BY 4.0 license.
