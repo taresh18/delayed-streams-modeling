@@ -16,7 +16,9 @@ transcribed into text. We provide two such models:
 More details can be found on the [project page](https://kyutai.org/next/stt).
 
 ### PyTorch implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en)
+<a href="https://huggingface.co/kyutai/stt-2.6b-en" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-kyutai%2Fstt-2.6b-en-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+</a>
 <a target="_blank" href="https://colab.research.google.com/drive/1mc0Q-FoHxU2pEvId8rTdS4q1r1zorJhS?usp=sharing">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
@@ -30,7 +32,10 @@ python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
 
 ### MLX implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-mlx)
+<a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face"
+    src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-kyutai%2Fstt-2.6b-en-mlx-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+</a>
 
 This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
 with version 0.2.5 or later, which can be installed via pip.
@@ -41,7 +46,9 @@ python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --te
 ```
 
 ### Rust implementation
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
+<a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-kyutai%2Fstt-2.6b-en-candle-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+</a>
 
 A standalone Rust example is provided in the `stt-rs` directory in this repo.
 This can be used as follows:
@@ -51,7 +58,9 @@ cargo run --features cuda -r -- bria.mp3
 ```
 
 ### Rust server
-[[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-candle)
+<a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-kyutai%2Fstt-2.6b-en-candle-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
+</a>
 
 The Rust implementation provides a server that can process multiple streaming
 queries in parallel. Dependening on the amount of memory on your GPU, you may
