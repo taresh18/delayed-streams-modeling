@@ -12,6 +12,8 @@ The main model handles english only, it has ~2.6b parameters.
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
+This requires the [moshi package](https://pypi.org/project/moshi/)
+with version 0.2.5 or later, which can be installed via pip.
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
@@ -20,6 +22,9 @@ python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 
 #### MLX implementation
 [[Hugging Face]](https://huggingface.co/kyutai/stt-2.6b-en-mlx)
+
+This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
+with version 0.2.5 or later, which can be installed via pip.
 
 ```bash
 # wget https://github.com/metavoiceio/metavoice-src/raw/main/assets/bria.mp3
