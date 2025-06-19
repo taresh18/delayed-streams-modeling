@@ -110,7 +110,8 @@ This can be used as follows:
 cd stt-rs
 cargo run --features cuda -r -- bria.mp3
 ```
-You can get the timestamps by adding the `--timestamps` flag.
+You can get the timestamps by adding the `--timestamps` flag, and see the output
+of the semantic VAD by adding the `--vad` flag.
 
 ### MLX implementation
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
