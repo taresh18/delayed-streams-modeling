@@ -42,7 +42,7 @@ wget https://github.com/kyutai-labs/moshi/raw/refs/heads/main/data/sample_fr_hib
 </a>
 
 This requires the [moshi package](https://pypi.org/project/moshi/)
-with version 0.2.5 or later, which can be installed via pip.
+with version 0.2.6 or later, which can be installed via pip.
 
 ```bash
 python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
@@ -115,7 +115,7 @@ You can get the timestamps by adding the `--timestamps` flag.
 hardware acceleration on Apple silicon.
 
 This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
-with version 0.2.5 or later, which can be installed via pip.
+with version 0.2.6 or later, which can be installed via pip.
 
 ```bash
 python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
