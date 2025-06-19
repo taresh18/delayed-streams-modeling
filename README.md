@@ -1,26 +1,28 @@
-# delayed-streams-modeling
-Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimodal sequence-to-sequence learning.
+# Delayed Streams Modeling
 
-## Speech-to-text
+This repo contains instructions and examples of how to run Kyutai Speech-To-Text models.
+These models are powered by delayed streams modeling (DSM),
+a flexible formulation for streaming, multimodal sequence-to-sequence learning.
+Text-to-speech models based on DSM coming soon!
 
-DSM can be used to build streaming speech-to-text models. We provide two such models
-with a different delay between the audio input and the text output.
-- An English and French model with ~1b parameters using a 0.5 second delay,
-  `kyutai/stt-1b-en_fr`.
-- An English only model with ~2.6b parameters using a 2.5 second delay,
-  `kyutai/stt-2.6b-en`.
+## Kyutai Speech-To-Text
+
+**More details can be found on the [project page](https://kyutai.org/next/stt).**
+
+Kyutai STT models are optimized for real-time usage, can be batched for efficiency, and return word level timestamps.
+We provide two models:
+- `kyutai/stt-1b-en_fr`, an English and French model with ~1B parameters, a 0.5 second delay, and a [semantic VAD](https://kyutai.org/next/stt#semantic-vad).
+- `kyutai/stt-2.6b-en`, an English-only model with ~2.6B parameters and a 2.5 second delay.
 
 These speech-to-text models have several advantages:
-- Easy batching for maximum efficiency: a H100 can process 400 streams in
-  real-time.
 - Streaming inference: the models can process audio in chunks, which allows
   for real-time transcription, and is great for interactive applications.
-- Return word-level timestamps.
-- Some models have a semantic Voice Activity Detection (VAD) component that
+- Easy batching for maximum efficiency: a H100 can process 400 streams in
+  real-time.
+- They return word-level timestamps.
+- The 1B model has a semantic Voice Activity Detection (VAD) component that
   can be used to detect when the user is speaking. This is especially useful
   for building voice agents.
-
-More details can be found on the [project page](https://kyutai.org/next/stt).
 
 You can retrieve the sample files used in the following snippets via:
 ```bash
@@ -49,36 +51,6 @@ uvx --with moshi python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria
 ```
 It will install the moshi package in a temporary environment and run the speech-to-text.
 
-### MLX implementation
-<a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
-</a>
-
-This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
-with version 0.2.5 or later, which can be installed via pip.
-
-```bash
-python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
-```
-
-If you have `uv` installed, you can skip the installation step and run directly:
-```bash
-uvx --with moshi-mlx python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
-```
-It will install the moshi package in a temporary environment and run the speech-to-text.
-
-### Rust implementation
-<a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
-</a>
-
-A standalone Rust example is provided in the `stt-rs` directory in this repo.
-This can be used as follows:
-```bash
-cd stt-rs
-cargo run --features cuda -r -- bria.mp3
-```
-
 ### Rust server
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
@@ -100,8 +72,11 @@ cargo install --features cuda moshi-server
 
 Then the server can be started via the following command using the config file
 from this repository.
+For `kyutai/stt-1b-en_fr`, use `configs/config-stt-en_fr.hf.toml`,
+and for `kyutai/stt-2.6b-en`, use `configs/config-stt-en-hf.toml`,
+
 ```bash
-moshi-server worker --config configs/config-stt-hf.toml
+moshi-server worker --config configs/config-stt-en_fr-hf.toml
 ```
 
 Once the server has started you can run a streaming inference with the following
@@ -114,6 +89,39 @@ The script limits the decoding speed to simulates real-time processing of the au
 Faster processing can be triggered by setting 
 the real-time factor, e.g. `--rtf 500` will process
 the data as fast as possible.
+
+### Rust standalone
+<a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
+</a>
+
+A standalone Rust example script is provided in the `stt-rs` directory in this repo.
+This can be used as follows:
+```bash
+cd stt-rs
+cargo run --features cuda -r -- bria.mp3
+```
+
+### MLX implementation
+<a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
+</a>
+
+[MLX](https://ml-explore.github.io/mlx/build/html/index.html) is Apple's ML framework that allows you to use
+hardware acceleration on Apple silicon.
+
+This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/)
+with version 0.2.5 or later, which can be installed via pip.
+
+```bash
+python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
+```
+
+If you have `uv` installed, you can skip the installation step and run directly:
+```bash
+uvx --with moshi-mlx python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
+```
+It will install the moshi package in a temporary environment and run the speech-to-text.
 
 ## Text-to-Speech
 
