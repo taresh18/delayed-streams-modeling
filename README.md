@@ -3,15 +3,22 @@ Delayed Streams Modeling (DSM) is a flexible formulation for streaming, multimod
 
 ## Speech-to-text
 
-DSM can be used to build streaming speech-to-text models. These models can be
-batched for efficiency, return word level timestamps,  and are great for
-interactive applications. We provide two such models, these models are
-characterized by their size as well as the delay it takes for audio to be
-transcribed into text. We provide two such models:
+DSM can be used to build streaming speech-to-text models. We provide two such models
+with a different delay between the audio input and the text output.
 - An English and French model with ~1b parameters using a 0.5 second delay,
   `kyutai/stt-1b-en_fr`.
 - An English only model with ~2.6b parameters using a 2.5 second delay,
   `kyutai/stt-2.6b-en`.
+
+These speech-to-text models have several advantages:
+- Easy batching for maximum efficiency: a H100 can process 400 streams in
+  real-time.
+- Streaming inference: the models can process audio in chunks, which allows
+  for real-time transcription, and is great for interactive applications.
+- Return word-level timestamps.
+- Some models have a semantic Voice Activity Detection (VAD) component that
+  can be used to detect when the user is speaking. This is especially useful
+  for building voice agents.
 
 More details can be found on the [project page](https://kyutai.org/next/stt).
 
