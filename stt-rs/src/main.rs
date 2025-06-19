@@ -172,8 +172,9 @@ impl Model {
             for asr_msg in asr_msgs.iter() {
                 match asr_msg {
                     moshi::asr::AsrMsg::Step { prs, .. } => {
-                        // prs is the probability of voice activity for different time horizons.
-                        // The first element is the most recent time horizon.
+                        // prs is the probability of having no voice activity for different time
+                        // horizons.
+                        // In kyutai/stt-1b-en_fr-candle, these horizons are 0.5s, 1s, 2s, and 3s.
                         if self.vad && prs[2][0] > 0.5 && !printed_eot {
                             printed_eot = true;
                             if !self.timestamps {
