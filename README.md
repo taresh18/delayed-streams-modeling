@@ -54,7 +54,7 @@ with version 0.2.6 or later, which can be installed via pip.
 python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
 
-If you have `uv` installed, you can skip the installation step and run directly:
+If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step and run directly:
 ```bash
 uvx --with moshi python -m moshi.run_inference --hf-repo kyutai/stt-2.6b-en bria.mp3
 ```
@@ -128,11 +128,15 @@ with version 0.2.6 or later, which can be installed via pip.
 python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
 ```
 
-If you have `uv` installed, you can skip the installation step and run directly:
+If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step and run directly:
 ```bash
 uvx --with moshi-mlx python -m moshi_mlx.run_inference --hf-repo kyutai/stt-2.6b-en-mlx bria.mp3 --temp 0
 ```
 It will install the moshi package in a temporary environment and run the speech-to-text.
+
+The MLX models can also be used in swift using the [moshi-swift
+codebase](https://github.com/kyutai-labs/moshi-swift), the 1b model has been
+tested to work fine on an iPhone 16 Pro.
 
 ## Text-to-Speech
 
