@@ -1,20 +1,16 @@
-<a href="https://huggingface.co/collections/kyutai/speech-to-text-685403682cf8a23ab9466886" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-KyutaiSTT-blue" style="display: inline-block; vertical-align: middle;"/>
-</a>
-<a target="_blank" href="https://colab.research.google.com/github/kyutai-labs/delayed-streams-modeling/blob/main/transcribe_via_pytorch.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
+# Delayed Streams Modeling: Kyutai STT & TTS
 
-
-This repo contains instructions and examples of how to run Kyutai Speech-To-Text models.
+This repo contains instructions and examples of how to run
+[Kyutai Speech-To-Text](#kyutai-speech-to-text)
+and [Kyutai Text-To-Speech](#kyutai-text-to-speech) models.
 These models are powered by delayed streams modeling (DSM),
 a flexible formulation for streaming, multimodal sequence-to-sequence learning.
 
-Text-to-speech models based on DSM coming soon!
-[Sign up here](https://docs.google.com/forms/d/15sB4zyfuwyXTii4OM74hFGkk4DlDNynJ9xywnaEzE4I/edit)
-to be notified when we open-source text-to-speech and [Unmute](https://unmute.sh).
-
 ## Kyutai Speech-To-Text
+
+<a href="https://huggingface.co/collections/kyutai/speech-to-text-685403682cf8a23ab9466886" target="_blank" style="margin: 2px;">
+    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-KyutaiSTT-blue" style="display: inline-block; vertical-align: middle;"/>
+</a>
 
 **More details can be found on the [project page](https://kyutai.org/next/stt).**
 
@@ -192,9 +188,61 @@ The MLX models can also be used in swift using the [moshi-swift
 codebase](https://github.com/kyutai-labs/moshi-swift), the 1b model has been
 tested to work fine on an iPhone 16 Pro.
 
-## Text-to-Speech
+## Kyutai Text-to-Speech
 
-We're in the process of open-sourcing our TTS models. Check back for updates!
+<a target="_blank" href="https://colab.research.google.com/github/kyutai-labs/delayed-streams-modeling/blob/main/transcribe_via_pytorch.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+We provide different implementations of Kyutai TTS for different use cases. Here is how to choose which one to use:
+
+- PyTorch: for research and tinkering. If you want to call the model from Python for research or experimentation, use our PyTorch implementation.
+- Rust: for production. If you want to serve Kyutai TTS in a production setting, use our Rust server. Our robust Rust server provides streaming access to the model over websockets. We use this server to run Unmute.
+- MLX: for on-device inference on iPhone and Mac. MLX is Apple's ML framework that allows you to use hardware acceleration on Apple silicon. If you want to run the model on a Mac or an iPhone, choose the MLX implementation.
+
+### PyTorch implementation
+
+<a target="_blank" href="https://colab.research.google.com/github/kyutai-labs/delayed-streams-modeling/blob/main/tts_pytorch.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+Check out our [Colab notebook](https://colab.research.google.com/github/kyutai-labs/delayed-streams-modeling/blob/main/tts_pytorch.ipynb) or use the script:
+
+```bash
+# From stdin, plays audio immediately
+echo "Hey, how are you?" | python scripts/tts_pytorch.py - -
+
+# From text file to audio file
+python scripts/tts_pytorch.py text_to_say.txt audio_output.wav
+```
+
+This requires the [moshi package](https://pypi.org/project/moshi/), which can be installed via pip.
+If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step
+and just prefix the command above with `uvx --with moshi`.
+
+### Rust server
+
+Example coming soon.
+
+### MLX implementation
+
+[MLX](https://ml-explore.github.io/mlx/build/html/index.html) is Apple's ML framework that allows you to use
+hardware acceleration on Apple silicon.
+
+Use our example script to run Kyutai TTS on MLX.
+The script takes text from stdin or a file and can output to a file or stream the resulting audio.
+
+```bash
+# From stdin, plays audio immediately
+echo "Hey, how are you?" | python scripts/tts_mlx.py - -
+
+# From text file to audio file
+python scripts/tts_mlx.py text_to_say.txt audio_output.wav
+```
+
+This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/), which can be installed via pip.
+If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step
+and just prefix the command above with `uvx --with moshi-mlx`.
 
 ## License
 
