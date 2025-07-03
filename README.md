@@ -116,7 +116,7 @@ However, please bear in mind that is an experimental feature and its behavior is
 </a>
 
 The Rust implementation provides a server that can process multiple streaming
-queries in parallel. Dependening on the amount of memory on your GPU, you may
+queries in parallel. Depending on the amount of memory on your GPU, you may
 have to adjust the batch size from the config file. For a L40S GPU, a batch size
 of 64 works well and requests can be processed at 3x real-time speed.
 
