@@ -44,7 +44,8 @@ Here is how to choose which one to use:
   MLX is Apple's ML framework that allows you to use hardware acceleration on Apple silicon.
   If you want to run the model on a Mac or an iPhone, choose the MLX implementation.
 
-### PyTorch implementation
+<details>
+<summary>PyTorch implementation</summary>
 <a href="https://huggingface.co/kyutai/stt-2.6b-en" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
 </a>
@@ -99,8 +100,10 @@ In the heart of an ancient forest, where the trees whispered secrets of the past
 
 Apart from nudging the model for a specific spelling of a word, other potential use-cases include speaker adaptation and steering the model towards a specific formatting style or even a language.
 However, please bear in mind that is an experimental feature and its behavior is very sensitive to the prompt provided.
+</details>
 
-### Rust server
+<details>
+<summary>Rust server</summary>
 
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
@@ -143,8 +146,10 @@ The script limits the decoding speed to simulates real-time processing of the au
 Faster processing can be triggered by setting 
 the real-time factor, e.g. `--rtf 1000` will process
 the data as fast as possible.
+</details>
 
-### Rust standalone
+<details>
+<summary>Rust standalone</summary>
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-candle" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
 </a>
@@ -157,8 +162,10 @@ cargo run --features cuda -r -- audio/bria.mp3
 ```
 You can get the timestamps by adding the `--timestamps` flag, and see the output
 of the semantic VAD by adding the `--vad` flag.
+</details>
 
-### MLX implementation
+<details>
+<summary>MLX implementation</summary>
 <a href="https://huggingface.co/kyutai/stt-2.6b-en-mlx" target="_blank" style="margin: 2px;">
     <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue" style="display: inline-block; vertical-align: middle;"/>
 </a>
@@ -187,6 +194,7 @@ python scripts/stt_from_mic_mlx.py
 The MLX models can also be used in swift using the [moshi-swift
 codebase](https://github.com/kyutai-labs/moshi-swift), the 1b model has been
 tested to work fine on an iPhone 16 Pro.
+</details>
 
 ## Kyutai Text-to-Speech
 
@@ -200,7 +208,8 @@ We provide different implementations of Kyutai TTS for different use cases. Here
 - Rust: for production. If you want to serve Kyutai TTS in a production setting, use our Rust server. Our robust Rust server provides streaming access to the model over websockets. We use this server to run Unmute.
 - MLX: for on-device inference on iPhone and Mac. MLX is Apple's ML framework that allows you to use hardware acceleration on Apple silicon. If you want to run the model on a Mac or an iPhone, choose the MLX implementation.
 
-### PyTorch implementation
+<details>
+<summary>PyTorch implementation</summary>
 
 <a target="_blank" href="https://colab.research.google.com/github/kyutai-labs/delayed-streams-modeling/blob/main/tts_pytorch.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
@@ -219,12 +228,16 @@ python scripts/tts_pytorch.py text_to_say.txt audio_output.wav
 This requires the [moshi package](https://pypi.org/project/moshi/), which can be installed via pip.
 If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step
 and just prefix the command above with `uvx --with moshi`.
+</details>
 
-### Rust server
+<details>
+<summary>Rust server</summary>
 
 Example coming soon.
+</details>
 
-### MLX implementation
+<details>
+<summary>MLX implementation</summary>
 
 [MLX](https://ml-explore.github.io/mlx/build/html/index.html) is Apple's ML framework that allows you to use
 hardware acceleration on Apple silicon.
@@ -243,6 +256,7 @@ python scripts/tts_mlx.py text_to_say.txt audio_output.wav
 This requires the [moshi-mlx package](https://pypi.org/project/moshi-mlx/), which can be installed via pip.
 If you have [uv](https://docs.astral.sh/uv/) installed, you can skip the installation step
 and just prefix the command above with `uvx --with moshi-mlx`.
+</details>
 
 ## License
 
