@@ -250,10 +250,13 @@ hardware acceleration on Apple silicon.
 
 Use our example script to run Kyutai TTS on MLX.
 The script takes text from stdin or a file and can output to a file or stream the resulting audio.
+When streaming the output, if the model is not fast enough to keep with
+real-time, you can use the `--quantize 8` or `--quantize 4` flags to quantize
+the model resulting in faster inference.
 
 ```bash
 # From stdin, plays audio immediately
-echo "Hey, how are you?" | python scripts/tts_mlx.py - -
+echo "Hey, how are you?" | python scripts/tts_mlx.py - - --quantize 8
 
 # From text file to audio file
 python scripts/tts_mlx.py text_to_say.txt audio_output.wav
