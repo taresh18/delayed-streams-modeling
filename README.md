@@ -211,6 +211,8 @@ tested to work fine on an iPhone 16 Pro.
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
+**More details can be found on the [project page](https://kyutai.org/next/tts).**
+
 We provide different implementations of Kyutai TTS for different use cases. Here is how to choose which one to use:
 
 - PyTorch: for research and tinkering. If you want to call the model from Python for research or experimentation, use our PyTorch implementation.
