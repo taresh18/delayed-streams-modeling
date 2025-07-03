@@ -6,6 +6,9 @@ and [Kyutai Text-To-Speech](#kyutai-text-to-speech) models.
 These models are powered by delayed streams modeling (DSM),
 a flexible formulation for streaming, multimodal sequence-to-sequence learning.
 
+But wait, what is "Delayed Streams Modeling"? It is a technique for solving many streaming X-to-Y tasks (with X, Y in `{speech, text}`)
+that formalize the approach we had with Moshi and Hibiki. A pre-print paper is coming soon!
+
 ## Kyutai Speech-To-Text
 
 <a href="https://huggingface.co/collections/kyutai/speech-to-text-685403682cf8a23ab9466886" target="_blank" style="margin: 2px;">
