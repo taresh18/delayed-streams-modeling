@@ -101,7 +101,9 @@ def main():
             callback=audio_callback,
         ):
             with tts_model.mimi.streaming(1):
-                tts_model.generate([entries], [condition_attributes], on_frame=_on_frame)
+                tts_model.generate(
+                    [entries], [condition_attributes], on_frame=_on_frame
+                )
             time.sleep(3)
             while True:
                 if pcms.qsize() == 0:
