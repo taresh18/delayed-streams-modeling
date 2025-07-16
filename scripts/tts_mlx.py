@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = [
 #     "huggingface_hub",
-#     "moshi_mlx==0.2.9",
+#     "moshi_mlx==0.2.11",
 #     "numpy",
 #     "sounddevice",
 # ]
@@ -36,7 +36,7 @@ def log(level: str, msg: str):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run Kyutai TTS using the PyTorch implementation"
+        description="Run Kyutai TTS using the MLX implementation"
     )
     parser.add_argument("inp", type=str, help="Input file, use - for stdin")
     parser.add_argument(
