@@ -2,7 +2,7 @@
 
 Here is the answer to a number of frequently asked questions.
 
-### Torch Compilation Errors
+### Torch compilation issues
 
 With some PyTorch/triton versions, one might encounter compilation errors
 like the following:
@@ -19,6 +19,29 @@ If that's the case, you can disable torch compilation by setting the following
 environment variable.
 ```bash
 export NO_TORCH_COMPILE=1
+```
+
+### Issues installing the sentencepiece dependency
+
+On some linux distributions (arch) or on macos, the local version of cmake can
+be too recent for the sentencepiece dependency.
+
+```
+CMake Error at CMakeLists.txt:15 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 has been removed from CMake.
+```
+
+You can either downgrade your cmake version, e.g. 3.31.0 on arch works or try
+setting `CMAKE_POLICY_VERSION_MINIMUM=3.5`.
+
+If you run into some errors when compiling the sentencepiece rust bindings,
+these could also be due to gcc being too recent, e.g. gcc 15. You can get
+around this by using gcc-13, e.g. by setting the following after installing
+the proper gcc packages.
+```bash
+export CMAKE_C_COMPILER=/usr/bin/gcc-13
+export CMAKE_CXX_COMPILER=/usr/bin/g++-13 
+CC=gcc-13 CXX=g++-13 cargo build --release
 ```
 
 ### Will you release training code?
