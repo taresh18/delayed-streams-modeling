@@ -44,6 +44,9 @@ export CMAKE_CXX_COMPILER=/usr/bin/g++-13
 CC=gcc-13 CXX=g++-13 cargo build --release
 ```
 
+Alternatively you can set `CXXFLAGS="-include cstdint"`, see this
+[issue](https://github.com/google/sentencepiece/issues/1108).
+
 ### Will you release training code?
 
 Some finetuning code can be found in the [kyutai-labs/moshi-finetune repo](https://github.com/kyutai-labs/moshi-finetune).
