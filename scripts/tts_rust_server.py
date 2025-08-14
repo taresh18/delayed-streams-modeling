@@ -143,7 +143,7 @@ async def websocket_client():
     parser.add_argument(
         "--url",
         help="The URL of the server to which to send the audio",
-        default="ws://127.0.0.1:8080",
+        default="ws://127.0.0.1:8089",
     )
     parser.add_argument("--api-key", default="public_token")
     args = parser.parse_args()
