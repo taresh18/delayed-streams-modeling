@@ -42,5 +42,7 @@ export LD_LIBRARY_PATH=$(python -c 'import sysconfig; print(sysconfig.get_config
 
 # uv run --locked --project ./dockerless moshi-server worker --config configs/config-tts.toml --port 8089
 
+export CUDA_VISIBLE_DEVICES=1
+
 uv run --locked --project ./dockerless moshi-server worker --config configs/config-tts.toml --port 8089
 
