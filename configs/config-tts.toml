@@ -7,10 +7,7 @@ authorized_ids = ["public_token"]
 type = "Py"
 path = "/api/tts_streaming"
 text_tokenizer_file = "hf://kyutai/tts-1.6b-en_fr/tokenizer_spm_8k_en_fr_audio.model"
-
-# Batch size determines how many parallel connections can the server handle.
-# Higher values mean slower inference. Adjust to your GPU memory capacity.
-batch_size = 1
+batch_size = 32  # Adjust to your GPU memory capacity
 text_bos_token = 1
 
 [modules.tts_py.py]
