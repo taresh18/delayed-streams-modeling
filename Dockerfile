@@ -13,8 +13,8 @@ RUN apt-get update && apt-get -y install cuda-toolkit-12-8
 
 ENV PATH="/usr/local/cuda-12.8/bin:$PATH"
 
-RUN mkdir -p /workspace
-COPY . /workspace/delayed-stream-modeling
+RUN mkdir -p /root/apps/delayed-stream-modeling
+COPY . /root/apps/delayed-stream-modeling
 
 # install uv
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -32,7 +32,7 @@ ENV CMAKE_POLICY_VERSION_MINIMUM=3.5
 ENV PATH="/root/.cargo/bin:/root/.local/bin:$PATH"
 
 # Set working directory
-WORKDIR /workspace/delayed-stream-modeling
+WORKDIR /root/apps/delayed-stream-modeling
 
 # Download Python project files for moshi-server dependencies
 RUN wget https://raw.githubusercontent.com/kyutai-labs/moshi/9837ca328d58deef5d7a4fe95a0fb49c902ec0ae/rust/moshi-server/pyproject.toml -O pyproject.toml
