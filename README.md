@@ -3,12 +3,10 @@
 This repo contains instructions and examples of how to run
 [Kyutai Speech-To-Text](#kyutai-speech-to-text)
 and [Kyutai Text-To-Speech](#kyutai-text-to-speech) models.
-These models are powered by delayed streams modeling (DSM),
-a flexible formulation for streaming, multimodal sequence-to-sequence learning.
 See also [Unmute](https://github.com/kyutai-labs/unmute), an voice AI system built using Kyutai STT and Kyutai TTS.
 
 But wait, what is "Delayed Streams Modeling"? It is a technique for solving many streaming X-to-Y tasks (with X, Y in `{speech, text}`)
-that formalize the approach we had with Moshi and Hibiki. A pre-print paper is coming soon!
+that formalize the approach we had with Moshi and Hibiki. See our [pre-print about DSM](https://arxiv.org/abs/2509.08753).
 
 ## Kyutai Speech-To-Text
 
@@ -328,3 +326,18 @@ pre-commit install
 ```
 
 If you're using `uv`, you can replace the two commands with `uvx pre-commit install`.
+
+## Citation
+
+Please cite the following paper.
+```
+@techreport{kyutai2025streaming,
+      title={Streaming Sequence-to-Sequence Learning with Delayed Streams Modeling}, 
+      author={Neil Zeghidour and Eugene Kharitonov and Manu Orsini and Václav Volhejn and Gabriel de Marmiesse and Edouard Grave and Patrick Pérez and Laurent Mazaré and Alexandre Défossez},
+      year={2025},
+      eprint={2509.08753},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2509.08753}, 
+}
+```

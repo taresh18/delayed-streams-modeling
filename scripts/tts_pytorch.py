@@ -63,7 +63,7 @@ def main():
             print("Enter text to synthesize (Ctrl+D to end input):")
         text = sys.stdin.read().strip()
     else:
-        with open(args.inp, "r") as fobj:
+        with open(args.inp, "r", encoding="utf-8") as fobj:
             text = fobj.read().strip()
 
     # If you want to make a dialog, you can pass more than one turn [text_speaker_1, text_speaker_2, text_2_speaker_1, ...]
@@ -124,9 +124,11 @@ def main():
                 _frames_cnt += 1
                 print(f"generated {_frames_cnt / 12.5:.2f}s", end="\r", flush=True)
 
+        start_time = time.time()
         result = tts_model.generate(
             [entries], [condition_attributes], on_frame=_on_frame
         )
+        print(f"\nTotal time: {time.time() - start_time:.2f}s")
         with tts_model.mimi.streaming(1), torch.no_grad():
             pcms = []
             for frame in result.frames[tts_model.delay_steps :]:
