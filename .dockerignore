@@ -1,1 +1,43 @@
-dockerless/.venv
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Git
+.git/
+.gitignore
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Rust
+target/
+Cargo.lock
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+.DS_Store
