@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  stt-server:
+    image: taresh18/kyutai-stt:v0
+    container_name: stt-server
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8090/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
